@@ -6,10 +6,10 @@ app = Flask(__name__)
 @app.route('/emotionDetector', methods = ['GET'])
 def emotion_detect():
     text_to_analyze = request.args.get('textToAnalyze', '')
-    if not text_to_analyze:
-        return render_template('index.html')
 
     emotions = emotion_detector(text_to_analyze)
+    if emotions.get('dominant_emotion') == None and :
+        return f"Invalid text! Please try again"
     response = f"For the given statement, the system response is " 
     response += f"'anger': {emotions.get('anger')}, "
     response += f"'disgust': {emotions.get('disgust')}, "
